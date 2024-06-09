@@ -4,3 +4,6 @@
 
 - useState
 - useEffect
+
+- useMemo
+- useCallback?
