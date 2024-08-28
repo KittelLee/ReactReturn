@@ -9,10 +9,14 @@ function App() {
     "강남 우동맛집",
     "파이썬독학",
   ]);
-  let [따봉, 따봉변경] = useState(0);
+  let [따봉, 따봉변경] = useState([0, 0, 0]);
   let [clothes, setClothes] = useState("남자코트 추천");
   let [pen, setPen] = useState("모나미");
   let [modal, setModal] = useState(false);
+
+  [1, 2, 3].map(function (a) {
+    return "1233211";
+  });
 
   return (
     <div className="App">
@@ -32,21 +36,6 @@ function App() {
       </button>
 
       <div className="list">
-        <h4>
-          {글제목[0]}{" "}
-          <span
-            onClick={() => {
-              따봉변경(따봉 + 1);
-            }}
-          >
-            👍
-          </span>{" "}
-          {따봉}{" "}
-        </h4>
-        <p>2월 17일 발행</p>
-      </div>
-
-      <div className="list">
         <h4>{글제목[1]} </h4>
         <p>2월 17일 발행</p>
       </div>
@@ -61,6 +50,27 @@ function App() {
         </h4>
         <p>2월 17일 발행</p>
       </div>
+
+      {글제목.map(function (a, i) {
+        return (
+          <div className="list" key={i}>
+            <h4>
+              {글제목[i]}
+              <span
+                onClick={() => {
+                  let copy = [...따봉];
+                  copy[i] = copy[i] + 1;
+                  따봉변경(copy);
+                }}
+              >
+                👍
+              </span>
+              {따봉[i]}
+            </h4>
+            <p>2월 17일 발행</p>
+          </div>
+        );
+      })}
 
       <div className="list" style={{ paddingBottom: "10px" }}>
         <h4>{pen}</h4>
