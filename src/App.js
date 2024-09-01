@@ -2,9 +2,6 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  // let post = "강남 우동 맛집";
-  // useState
-
   let [글제목, 글제목변경] = useState([
     "남자 코트 추천",
     "강남 우동맛집",
