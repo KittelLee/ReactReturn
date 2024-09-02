@@ -6,6 +6,7 @@ function App() {
   let [따봉, 따봉변경] = useState(0);
   let [modal, setModal] = useState(false);
   let [title, setTitle] = useState(0);
+  let [입력값, 입력값변경] = useState("");
 
   [1, 2, 3].map(function (a) {
     return "1233211";
@@ -28,7 +29,8 @@ function App() {
             >
               {글제목[i]}
               <span
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   따봉변경(따봉 + 1);
                 }}
               >
@@ -41,29 +43,14 @@ function App() {
         );
       })}
 
-      <button
-        onClick={() => {
-          setTitle(0);
+      <input
+        onChange={(e) => {
+          입력값변경(e.target.value);
+          console.log(입력값);
         }}
-      >
-        글제목0
-      </button>
-      <button
-        onClick={() => {
-          setTitle(1);
-        }}
-      >
-        글제목1
-      </button>
-      <button
-        onClick={() => {
-          setTitle(2);
-        }}
-      >
-        글제목2
-      </button>
+      />
 
-      {modal == true ? <Modal title={title} 글제목={글제목} /> : null}
+      {modal === true ? <Modal title={title} 글제목={글제목} /> : null}
     </div>
   );
 }
